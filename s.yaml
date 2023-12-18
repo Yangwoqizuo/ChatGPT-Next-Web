@@ -50,9 +50,9 @@ services:
       function:
         name: "node"
         description: 'Serverless Devs Web Framework Function'
-        runtime: nodejs18.x
+        runtime: custom-container
         codeUri: './'
-        handler: index.handler
+        caPort: 3000
         timeout: 60
       triggers:
         - name: httpTrigger
