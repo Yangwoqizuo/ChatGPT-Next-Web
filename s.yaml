@@ -56,14 +56,14 @@ services:
         timeout: 60
         environmentVariables:
            NODE_PATH: /mnt/lib
-      triggers:
-        - name: httpTrigger
-          type: http
-          config:
-            authType: anonymous
-            methods:
-              - GET
-              - POST
+      # triggers:
+      #   - name: httpTrigger
+      #     type: http
+      #     config:
+      #       authType: anonymous
+      #       methods:
+      #         - GET
+      #         - POST
       # customDomains:
       #   - domainName: auto
       #     protocol: HTTP
