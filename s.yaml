@@ -19,12 +19,12 @@ name: copilot
 # access 是当前应用所需要的密钥信息配置：
 # 密钥配置可以参考：https://www.serverless-devs.com/serverless-devs/command/config
 # 密钥使用顺序可以参考：https://www.serverless-devs.com/serverless-devs/tool#密钥使用顺序与规范
-access: "{{ access }}"
+access: "default"
 
 vars: # 全局变量
-  region: "{{ region }}"
+  region: "ap-northeast-2"
   service:
-    name: "{{ serviceName }}"
+    name: "copilot"
     description: 'Serverless Devs Web Framework Service'
 
 services:
@@ -48,7 +48,7 @@ services:
       region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
       service: ${vars.service}
       function:
-        name: "{{ functionName }}"
+        name: "node"
         description: 'Serverless Devs Web Framework Function'
         runtime: nodejs18.x
         codeUri: './'
