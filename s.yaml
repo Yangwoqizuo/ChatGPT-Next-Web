@@ -70,7 +70,7 @@ services:
         name: "node"
         description: 'Serverless Devs Web Framework Function'
         runtime: custom
-        codeUri: './output'
+        codeUri: ./output
         caPort: 3000
         timeout: 60
         layers:
