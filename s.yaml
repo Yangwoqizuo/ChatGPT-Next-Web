@@ -26,7 +26,6 @@ vars: # 全局变量
   service:
     name: "copilot"
     description: 'Serverless Devs Web Framework Service'
-    nasConfig: auto
 
 services:
   framework: # 业务名称/模块名称
@@ -44,8 +43,16 @@ services:
           path: ./
         - run: export PATH=/usr/local/versions/node/v18.14.2/bin:$PATH && yarn build 
           path: ./ 
-        - run: cp -r .next/standalone ./
+        -r run: mkdir output
+          path: ./
+        - run: cp -r public ./output/public
           path: ./      
+        - run: cp -r .next/standalone ./output
+          path: ./ 
+        - run: cp -r .next/static ./output/.next/static
+          path: ./
+        - run: cp -r .next/server ./output/.next/server
+          path: ./
     #        - component: fc build --use-docker               # 要运行的组件，格式为【component: 组件名 命令 参数】（可以通过s cli registry search --type Component 获取组件列表）
     #        - plugin: myplugin                               # 与运行的插件 （可以通过s cli registry search --type Plugin 获取组件列表）
     #          args:                                          # 插件的参数信息
@@ -59,7 +66,7 @@ services:
         name: "node"
         description: 'Serverless Devs Web Framework Function'
         runtime: custom
-        codeUri: './'
+        codeUri: './output'
         caPort: 3000
         timeout: 60
         layers:
@@ -67,7 +74,6 @@ services:
         environmentVariables:
           PATH: /opt/nodejs16/bin:/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin
           NODE_PATH:
-            - /mnt/auto
             - /opt/nodejs/node_modules
         customRuntimeConfig:
           command:
