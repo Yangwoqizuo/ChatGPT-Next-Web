@@ -26,6 +26,7 @@ vars: # 全局变量
   service:
     name: "copilot"
     description: 'Serverless Devs Web Framework Service'
+    nasConfig: auto
 
 services:
   framework: # 业务名称/模块名称
@@ -53,6 +54,8 @@ services:
         codeUri: './'
         handler: index.handler
         timeout: 60
+        environmentVariables:
+           NODE_PATH: /mnt/lib
       triggers:
         - name: httpTrigger
           type: http
