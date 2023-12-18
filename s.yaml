@@ -22,7 +22,7 @@ name: copilot
 access: "default"
 
 vars: # 全局变量
-  region: "ap-northeast-2"
+  region: "ap-northeast-1"
   service:
     name: "copilot"
     description: 'Serverless Devs Web Framework Service'
@@ -55,20 +55,20 @@ services:
         handler: index.handler
         timeout: 60
         environmentVariables:
-           NODE_PATH: /mnt/lib
-      # triggers:
-      #   - name: httpTrigger
-      #     type: http
-      #     config:
-      #       authType: anonymous
-      #       methods:
-      #         - GET
-      #         - POST
-      # customDomains:
-      #   - domainName: auto
-      #     protocol: HTTP
-      #     routeConfigs:
-      #       - path: '/*'
+           NODE_PATH: /mnt/auto
+      triggers:
+        - name: httpTrigger
+          type: http
+          config:
+            authType: anonymous
+            methods:
+              - GET
+              - POST
+      customDomains:
+        - domainName: auto
+          protocol: HTTP
+          routeConfigs:
+            - path: '/*'
 
 #  next-function: # 第二个函数的案例，仅供参考
 #    # 如果在当前项目下执行 s deploy，会同时部署模块：
