@@ -63,10 +63,12 @@ services:
         caPort: 3000
         timeout: 60
         layers:
-          - acs:fc:${vars.region}:official:layers/Nodejs18/versions/1
+          - acs:fc:${vars.region}:official:layers/Nodejs-Aliyun-SDK/versions/2
         environmentVariables:
           PATH: /opt/nodejs18/bin:/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin
-          NODE_PATH: /mnt/auto
+          NODE_PATH: :
+            - /mnt/auto
+            - /opt/nodejs/node_modules
         customRuntimeConfig:
           command:
             - node
