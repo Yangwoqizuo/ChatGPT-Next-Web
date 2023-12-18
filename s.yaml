@@ -64,21 +64,19 @@ services:
     #      post-deploy: # 在deploy之后运行
     #        - component: fc versions publish # 要运行的命令行
     props: # 组件的属性值
-      region: ${vars.region} # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
+      region: ${vars.region}         # 关于变量的使用方法，可以参考：https://www.serverless-devs.com/serverless-devs/yaml#变量赋值
       service: ${vars.service}
       function:
-        name: "node"
+        name: 'node'
         description: 'Serverless Devs Web Framework Function'
+        codeUri: './output'
         runtime: custom
-        codeUri: ./output
-        caPort: 3000
         timeout: 60
+        caPort: 3000
         layers:
-          - acs:fc:${vars.region}:official:layers/Nodejs-Aliyun-SDK/versions/2
+          - acs:fc:${vars.region}:official:layers/Nodejs16/versions/1
         environmentVariables:
           PATH: /opt/nodejs16/bin:/usr/local/bin/apache-maven/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/ruby/bin
-          NODE_PATH:
-            - /opt/nodejs/node_modules
         customRuntimeConfig:
           command:
             - node
@@ -90,7 +88,6 @@ services:
             authType: anonymous
             methods:
               - GET
-              - POST
       customDomains:
         - domainName: auto
           protocol: HTTP
