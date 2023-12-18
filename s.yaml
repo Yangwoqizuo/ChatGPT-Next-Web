@@ -43,6 +43,12 @@ services:
           path: ./
         - run: export PATH=/usr/local/versions/node/v18.14.2/bin:$PATH && yarn build 
           path: ./ 
+        - run: mkdir -p ./output/public
+          path: ./     
+        - run: mkdir -p ./output/.next/static
+          path: ./      
+        - run: mkdir -p ./output/.next/server
+          path: ./ 
         - run: cp -ru public ./output/public
           path: ./      
         - run: cp -ru .next/standalone ./output
