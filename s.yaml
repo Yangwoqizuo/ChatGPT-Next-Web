@@ -43,13 +43,13 @@ services:
           path: ./
         - run: export PATH=/usr/local/versions/node/v18.14.2/bin:$PATH && yarn build 
           path: ./ 
-        - run: cp -r public ./output/public
+        - run: cp -ru public ./output/public
           path: ./      
-        - run: cp -r .next/standalone ./output
+        - run: cp -ru .next/standalone ./output
           path: ./ 
-        - run: cp -r .next/static ./output/.next/static
+        - run: cp -ru .next/static ./output/.next/static
           path: ./
-        - run: cp -r .next/server ./output/.next/server
+        - run: cp -ru .next/server ./output/.next/server
           path: ./
     #        - component: fc build --use-docker               # 要运行的组件，格式为【component: 组件名 命令 参数】（可以通过s cli registry search --type Component 获取组件列表）
     #        - plugin: myplugin                               # 与运行的插件 （可以通过s cli registry search --type Plugin 获取组件列表）
